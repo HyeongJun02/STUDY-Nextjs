@@ -8,12 +8,12 @@ type SP = {
 };
 
 export default async function Home({
-  // ✅ searchParams는 이제 Promise
+  // searchParams는 이제 Promise
   searchParams,
 }: {
   searchParams: Promise<SP>;
 }) {
-  // ✅ 먼저 await 해서 꺼낸다
+  // 먼저 await 해서 꺼낸다
   const sp = await searchParams;
 
   const { items, total } = await fetchListings({
