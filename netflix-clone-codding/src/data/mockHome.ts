@@ -9,7 +9,7 @@ export type MediaItem = {
 export const HERO: MediaItem = {
   id: 'dont-look-up',
   title: '돈룩업',
-  detail: '위를 보지마',
+  detail: '별다른 연구성과를 내지 못하던 천문학과 교수 랜들 민디와 그의 제자 케이트 디비아스키는 어느 날 상상을 초월하는 크기의 혜성이 지구를 향해 돌진하고 있다는 것을 알게 된다.',
   // 아무 웹 이미지 링크 사용 가능 (예시는 TMDB 표준 사이즈 경로)
   backdrop: 'https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2021%2F12%2FNetflix-dont-look-up-new-character-poster-image-00.jpg?q=75&w=800&cbr=1&fit=max',
   poster:   'https://image.tmdb.org/t/p/w342/6oC2K9P6u1U0f0h5VnqQOe1Nqv2.jpg'
