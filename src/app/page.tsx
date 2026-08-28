@@ -8,6 +8,13 @@ const FEATURES = [
     desc: "Provider 없이 전역 상태 공유하기. selector로 필요한 조각만 구독하고, 리렌더 횟수를 눈으로 비교한다.",
     tags: ["상태관리", "client"],
   },
+  {
+    href: "/tailwind",
+    emoji: "🎨",
+    title: "Tailwind",
+    desc: "레이아웃부터 애니메이션까지, 렌더된 결과와 그걸 만든 코드를 나란히 보는 스타일 카탈로그.",
+    tags: ["CSS", "v4"],
+  },
 ];
 
 export default function Home() {
