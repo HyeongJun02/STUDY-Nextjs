@@ -72,7 +72,8 @@ export const useLog = create<{
   entries: [],
   push: (e) =>
     set((s) => ({
-      entries: [{ ...e, id: (s.entries[0]?.id ?? 0) + 1 }, ...s.entries].slice(0, 30),
+      // 콘솔처럼 새 줄은 뒤에 붙이고, 오래된 것부터 버린다.
+      entries: [...s.entries, { ...e, id: (s.entries.at(-1)?.id ?? 0) + 1 }].slice(-30),
     })),
   clear: () => set({ entries: [] }),
 }));

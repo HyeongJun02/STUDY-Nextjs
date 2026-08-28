@@ -225,7 +225,8 @@ export function LogPanel() {
         </button>
       </div>
 
-      <div className="max-h-64 overflow-y-auto rounded-xl bg-zinc-950 p-3 font-mono text-[12px] leading-relaxed">
+      {/* flex-col-reverse: 줄이 늘어나도 스크롤이 알아서 맨 아래에 붙어 있는다 (JS 불필요) */}
+      <div className="flex max-h-64 flex-col-reverse overflow-y-auto rounded-xl bg-zinc-950 p-3 font-mono text-[12px] leading-relaxed">
         {entries.length === 0 ? (
           <p className="text-zinc-600">아직 변화 없음…</p>
         ) : (
