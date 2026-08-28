@@ -1,6 +1,5 @@
 import Link from "next/link";
-
-type Accent = keyof typeof ACCENT;
+import { FEATURES, PLANNED } from "@/lib/features";
 
 /**
  * Tailwind는 소스에 적힌 클래스 문자열만 찾아낸다.
@@ -32,55 +31,6 @@ const ACCENT = {
     arrow: "group-hover:text-amber-500",
   },
 } as const;
-
-const FEATURES: {
-  href: string;
-  emoji: string;
-  title: string;
-  desc: string;
-  tags: string[];
-  accent: Accent;
-}[] = [
-  {
-    href: "/zustand",
-    emoji: "🐻",
-    title: "Zustand",
-    desc: "Provider 없이 전역 상태 공유하기. selector로 필요한 조각만 구독하고, 리렌더 횟수를 눈으로 비교한다.",
-    tags: ["상태관리", "리렌더"],
-    accent: "emerald",
-  },
-  {
-    href: "/tailwind",
-    emoji: "🎨",
-    title: "Tailwind",
-    desc: "레이아웃부터 애니메이션까지, 렌더된 결과와 그걸 만든 코드를 나란히 보는 스타일 카탈로그.",
-    tags: ["CSS", "v4"],
-    accent: "sky",
-  },
-  {
-    href: "/query",
-    emoji: "🔄",
-    title: "TanStack Query",
-    desc: "느린 가짜 API에 붙여 캐시 히트/미스, staleTime, 낙관적 업데이트와 롤백을 이벤트 로그로 확인한다.",
-    tags: ["서버 상태", "캐싱"],
-    accent: "violet",
-  },
-  {
-    href: "/form",
-    emoji: "📝",
-    title: "React Hook Form + Zod",
-    desc: "스키마 하나로 브라우저와 서버가 같이 검증한다. 제어 컴포넌트와 리렌더 횟수도 나란히 비교.",
-    tags: ["폼", "검증"],
-    accent: "amber",
-  },
-];
-
-/** 다음에 만들 것. 투두를 문서가 아니라 화면에 둔다. */
-const PLANNED = [
-  { title: "Suspense · 스트리밍", desc: "loading.tsx / error.tsx, 서버 컴포넌트로 가져오기" },
-  { title: "접근성 모달", desc: "포커스 트랩, Esc, aria-*, 스크롤 잠금 — 직접 구현" },
-  { title: "중고거래 MVP", desc: "실험실을 멈추고 완성된 서비스 하나로" },
-];
 
 export default function Home() {
   return (

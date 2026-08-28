@@ -96,7 +96,7 @@ function DemoCard({ demo }: { demo: Demo }) {
 
 export function SectionBlock({ section }: { section: Section }) {
   return (
-    <section id={section.id} className="scroll-mt-6">
+    <section id={section.id} className="scroll-mt-28">
       <h2 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
         {section.title}
       </h2>

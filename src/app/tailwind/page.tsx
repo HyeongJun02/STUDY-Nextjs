@@ -14,7 +14,7 @@ export default function TailwindPage() {
     >
 
       {/* 목차: 스크롤해도 따라오도록 sticky */}
-      <nav className="sticky top-0 z-10 -mx-6 mb-10 border-y border-zinc-200 bg-zinc-50/90 px-6 py-3 backdrop-blur-sm dark:border-zinc-800 dark:bg-black/90">
+      <nav className="sticky top-14 z-10 -mx-6 mb-10 border-y border-zinc-200 bg-zinc-50/90 px-6 py-3 backdrop-blur-sm dark:border-zinc-800 dark:bg-black/90">
         <ul className="flex flex-wrap gap-2">
           {SECTIONS.map((s) => (
             <li key={s.id}>
