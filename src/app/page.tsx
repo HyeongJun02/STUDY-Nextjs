@@ -22,6 +22,13 @@ const FEATURES = [
     desc: "느린 가짜 API에 붙여, 캐시 히트/미스·staleTime·낙관적 업데이트와 롤백을 이벤트 로그로 확인한다.",
     tags: ["서버 상태", "캐싱"],
   },
+  {
+    href: "/form",
+    emoji: "📝",
+    title: "React Hook Form + Zod",
+    desc: "스키마 하나로 브라우저와 서버가 같이 검증한다. 제어 컴포넌트와 리렌더 횟수도 나란히 비교.",
+    tags: ["폼", "검증"],
+  },
 ];
 
 export default function Home() {
