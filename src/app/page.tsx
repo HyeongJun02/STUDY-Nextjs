@@ -15,6 +15,13 @@ const FEATURES = [
     desc: "레이아웃부터 애니메이션까지, 렌더된 결과와 그걸 만든 코드를 나란히 보는 스타일 카탈로그.",
     tags: ["CSS", "v4"],
   },
+  {
+    href: "/query",
+    emoji: "🔄",
+    title: "TanStack Query",
+    desc: "느린 가짜 API에 붙여, 캐시 히트/미스·staleTime·낙관적 업데이트와 롤백을 이벤트 로그로 확인한다.",
+    tags: ["서버 상태", "캐싱"],
+  },
 ];
 
 export default function Home() {
