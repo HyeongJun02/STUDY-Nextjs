@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRenderCount } from "@/lib/use-render-count";
 import {
+  cartLines,
   PRODUCTS,
   selectCount,
   selectTotal,
@@ -114,7 +115,7 @@ export function CartPanel() {
   const remove = useCart((s) => s.remove);
   const clear = useCart((s) => s.clear);
   const renders = useRenderCount();
-  const entries = Object.entries(items);
+  const lines = cartLines(items);
 
   return (
     <Panel
@@ -123,36 +124,33 @@ export function CartPanel() {
       renders={renders}
       accent
     >
-      {entries.length === 0 ? (
+      {lines.length === 0 ? (
         <p className="py-8 text-center text-sm text-zinc-400">
           왼쪽에서 상품을 담아보세요
         </p>
       ) : (
         <ul className="flex flex-col gap-2">
-          {entries.map(([id, qty]) => {
-            const p = PRODUCTS.find((p) => p.id === id)!;
-            return (
-              <li
-                key={id}
-                className="flex items-center gap-3 rounded-xl bg-white/70 px-3 py-2 dark:bg-zinc-900/70"
+          {lines.map(({ product, qty }) => (
+            <li
+              key={product.id}
+              className="flex items-center gap-3 rounded-xl bg-white/70 px-3 py-2 dark:bg-zinc-900/70"
+            >
+              <span className="text-lg">{product.emoji}</span>
+              <span className="flex-1 text-sm text-zinc-800 dark:text-zinc-200">
+                {product.name}
+              </span>
+              <span className="font-mono text-xs tabular-nums text-zinc-500">
+                × {qty}
+              </span>
+              <button
+                onClick={() => remove(product.id)}
+                aria-label={`${product.name} 하나 빼기`}
+                className="h-6 w-6 rounded-md border border-zinc-300 text-xs text-zinc-600 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
-                <span className="text-lg">{p.emoji}</span>
-                <span className="flex-1 text-sm text-zinc-800 dark:text-zinc-200">
-                  {p.name}
-                </span>
-                <span className="font-mono text-xs tabular-nums text-zinc-500">
-                  × {qty}
-                </span>
-                <button
-                  onClick={() => remove(id)}
-                  aria-label={`${p.name} 하나 빼기`}
-                  className="h-6 w-6 rounded-md border border-zinc-300 text-xs text-zinc-600 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                >
-                  −
-                </button>
-              </li>
-            );
-          })}
+                −
+              </button>
+            </li>
+          ))}
         </ul>
       )}
 
@@ -164,7 +162,7 @@ export function CartPanel() {
       </div>
       <button
         onClick={clear}
-        disabled={entries.length === 0}
+        disabled={lines.length === 0}
         className="mt-3 rounded-lg border border-zinc-300 px-3 py-2 text-xs text-zinc-600 transition hover:bg-zinc-100 disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
       >
         비우기

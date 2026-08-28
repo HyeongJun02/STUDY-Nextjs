@@ -2,6 +2,7 @@
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { Card } from "@/components/card";
 import type { Post } from "./api/data";
 
 type PostsRes = { posts: Post[]; servedAt: string };
@@ -15,30 +16,6 @@ async function api<T>(url: string, init?: RequestInit): Promise<T> {
 }
 
 /* ------------------------------------------------------------------ 공용 UI */
-
-function Card({
-  title,
-  note,
-  children,
-}: {
-  title: string;
-  note?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900/60">
-      <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        {title}
-      </h2>
-      {note && (
-        <p className="mt-1 mb-4 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-          {note}
-        </p>
-      )}
-      {children}
-    </section>
-  );
-}
 
 const TONE = {
   green: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",

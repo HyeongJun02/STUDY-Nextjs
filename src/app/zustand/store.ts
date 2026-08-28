@@ -49,11 +49,21 @@ export const useCart = create<CartState>((set) => ({
 export const selectCount = (s: CartState) =>
   Object.values(s.items).reduce((a, b) => a + b, 0);
 
+/**
+ * 장바구니 줄 목록(상품 + 수량). 상품 목록에 없는 id는 조용히 버린다.
+ * persist를 붙였을 때 예전에 담아둔, 지금은 사라진 상품이 들어와도 터지지 않게.
+ *
+ * 주의: 호출할 때마다 새 배열을 만든다. useCart(cartLines)처럼 selector로 넘기면
+ * 매번 참조가 달라져 무한 리렌더가 된다. items를 구독한 뒤 그 값으로 호출할 것.
+ */
+export const cartLines = (items: CartState["items"]) =>
+  Object.entries(items).flatMap(([id, qty]) => {
+    const product = PRODUCTS.find((p) => p.id === id);
+    return product ? [{ product, qty }] : [];
+  });
+
 export const selectTotal = (s: CartState) =>
-  Object.entries(s.items).reduce(
-    (sum, [id, qty]) => sum + (PRODUCTS.find((p) => p.id === id)?.price ?? 0) * qty,
-    0,
-  );
+  cartLines(s.items).reduce((sum, line) => sum + line.product.price * line.qty, 0);
 
 export type LogEntry = {
   id: number;
