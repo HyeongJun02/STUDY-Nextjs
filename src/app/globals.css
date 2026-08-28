@@ -19,6 +19,11 @@
   }
 }
 
+html {
+  /* 짧은 페이지엔 스크롤바가 없어서, 이동할 때마다 본문이 좌우로 밀린다. 자리를 미리 비워둔다. */
+  scrollbar-gutter: stable;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

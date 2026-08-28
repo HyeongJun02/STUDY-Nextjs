@@ -88,7 +88,7 @@ export default function Home() {
       {/* 위쪽에 은은한 빛 하나. 배경이 완전히 밋밋하지 않게. */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(50rem_24rem_at_50%_-6rem,rgba(16,185,129,0.16),transparent)]" />
 
-      <main className="relative mx-auto w-full max-w-4xl px-6 py-20 sm:py-28">
+      <main className="relative mx-auto w-full max-w-5xl px-6 py-20 sm:py-28">
         <header>
           <div className="flex items-center gap-2">
             <span className="relative flex size-2">
