@@ -52,26 +52,39 @@ describe("signupSchema", () => {
     expect(에러?.email).toContain("이메일 형식이 아닙니다");
   });
 
-  /* ── 여기서부터 직접 ──────────────────────────────────────────────
-   *
-   * 전부 위 두 개와 같은 모양입니다. 정상값에서 한 칸만 바꾸고, 그 칸에
-   * 에러가 붙는지 확인하면 됩니다. 기대하는 메시지는 schema.ts에 적혀 있습니다.
-   *
-   * 쓸 만한 매처:
-   *   expect(에러?.password).toContain("메시지")   그 칸에 이 이유가 있나
-   *   expect(에러).toBeNull()                      아무 데도 안 걸렸나
-   *   expect(에러?.password).toBeUndefined()       그 칸엔 에러가 없나
-   */
+  test("비밀번호가 8자보다 짧으면 password 칸에 이유가 붙는다", () => {
+    // 정상값에서 password 한 칸만 망가뜨린다
+    const 에러 = 검증({ ...정상값, password: "1234567" });
 
-  test.todo("비밀번호가 8자보다 짧으면 password 칸에 이유가 붙는다");
+    expect(에러?.password).toContain("8자 이상 입력해주세요");
+  });
 
-  test.todo("비밀번호에 숫자가 하나도 없으면 password 칸에 이유가 붙는다");
+  test("비밀번호에 숫자가 하나도 없으면 password 칸에 이유가 붙는다", () => {
+    // 정상값에서 password 한 칸만 망가뜨린다
+    const 에러 = 검증({ ...정상값, password: "abcdefgh" });
 
-  test.todo(
-    "비밀번호 확인이 다르면 passwordConfirm 칸에 붙는다 (password 칸에는 안 붙어야 한다)",
-  );
+    expect(에러?.password).toContain("숫자를 하나 이상 포함해주세요");
+  });
 
-  test.todo("만 14세 미만이면 age 칸에 이유가 붙는다");
 
-  test.todo("약관에 동의하지 않으면 agree 칸에 이유가 붙는다");
+  test("비밀번호 확인이 다르면 passwordConfirm 칸에 붙는다 (password 칸에는 안 붙어야 한다)", () => {
+    // password 자체는 규칙을 다 지킨 값이다. 두 칸이 서로 다른 것만 문제.
+    const 에러 = 검증({ ...정상값, passwordConfirm: "abcd9999" });
+
+    expect(에러?.passwordConfirm).toContain("비밀번호가 일치하지 않습니다");
+    // 화면에서 빨개져야 하는 건 "비밀번호 확인" 칸이지 "비밀번호" 칸이 아니다
+    expect(에러?.password).toBeUndefined();
+  });
+
+  test("만 14세 미만이면 age 칸에 이유가 붙는다", () => {
+    const 에러 = 검증({ ...정상값, age: 13 });
+
+    expect(에러?.age).toContain("만 14세 이상만 가입할 수 있습니다");
+  });
+
+  test("약관에 동의하지 않으면 agree 칸에 이유가 붙는다", () => {
+    const 에러 = 검증({ ...정상값, agree: false });
+
+    expect(에러?.agree).toContain("약관에 동의해야 합니다");
+  });
 });
