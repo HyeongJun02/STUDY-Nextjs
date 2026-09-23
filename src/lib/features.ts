@@ -10,7 +10,7 @@ export type Feature = {
   short: string;
   desc: string;
   tags: string[];
-  accent: "emerald" | "sky" | "violet" | "amber";
+  accent: "emerald" | "sky" | "violet" | "amber" | "rose";
 };
 
 export const FEATURES: Feature[] = [
@@ -50,11 +50,19 @@ export const FEATURES: Feature[] = [
     tags: ["폼", "검증"],
     accent: "amber",
   },
+  {
+    href: "/suspense",
+    emoji: "⏳",
+    title: "Suspense · 스트리밍",
+    short: "Suspense",
+    desc: "느린 조각만 나중에 채운다. loading.tsx와 error.tsx가 무엇을 대신해주는지 확인한다.",
+    tags: ["서버 컴포넌트", "스트리밍"],
+    accent: "rose",
+  },
 ];
 
 /** 다음에 만들 것. 투두를 문서가 아니라 화면에 둔다. */
 export const PLANNED = [
-  { title: "Suspense · 스트리밍", desc: "loading.tsx / error.tsx, 서버 컴포넌트로 가져오기" },
   { title: "접근성 모달", desc: "포커스 트랩, Esc, aria-*, 스크롤 잠금 — 직접 구현" },
   { title: "중고거래 MVP", desc: "실험실을 멈추고 완성된 서비스 하나로" },
 ];

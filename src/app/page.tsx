@@ -30,6 +30,12 @@ const ACCENT = {
     glow: "group-hover:bg-amber-500/20",
     arrow: "group-hover:text-amber-500",
   },
+  rose: {
+    tile: "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300",
+    border: "hover:border-rose-400 dark:hover:border-rose-700",
+    glow: "group-hover:bg-rose-500/20",
+    arrow: "group-hover:text-rose-500",
+  },
 } as const;
 
 export default function Home() {

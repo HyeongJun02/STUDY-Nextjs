@@ -1,3 +1,5 @@
+import { hhmmss } from "@/lib/time";
+
 /** 가짜 서버. 라우트 핸들러들이 공유하는 데이터와 유틸. */
 
 export type Post = { id: string; title: string; body: string; likes: number };
@@ -34,9 +36,4 @@ export const POSTS: Post[] = [
 export const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /** 응답이 캐시에서 온 건지 서버에서 온 건지 눈으로 구분하려고 붙인다. */
-export const servedAt = () => {
-  const d = new Date();
-  const p = (n: number, len = 2) => String(n).padStart(len, "0");
-  // toLocaleTimeString은 Node에서 "11시 27분 8초"로 나온다. 직접 조립하는 게 확실하다.
-  return `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}.${p(d.getMilliseconds(), 3)}`;
-};
+export const servedAt = hhmmss;
