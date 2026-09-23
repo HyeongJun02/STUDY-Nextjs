@@ -10,7 +10,7 @@ export type Feature = {
   short: string;
   desc: string;
   tags: string[];
-  accent: "emerald" | "sky" | "violet" | "amber" | "rose";
+  accent: "emerald" | "sky" | "violet" | "amber" | "rose" | "indigo";
 };
 
 export const FEATURES: Feature[] = [
@@ -59,10 +59,18 @@ export const FEATURES: Feature[] = [
     tags: ["서버 컴포넌트", "스트리밍"],
     accent: "rose",
   },
+  {
+    href: "/a11y",
+    emoji: "♿",
+    title: "접근성",
+    short: "A11y",
+    desc: "라이브러리 없이 만든 모달. 포커스 트랩·Esc·스크롤 잠금을 테스트로 고정했다.",
+    tags: ["키보드", "보조기기"],
+    accent: "indigo",
+  },
 ];
 
 /** 다음에 만들 것. 투두를 문서가 아니라 화면에 둔다. */
 export const PLANNED = [
-  { title: "접근성 모달", desc: "포커스 트랩, Esc, aria-*, 스크롤 잠금 — 직접 구현" },
   { title: "중고거래 MVP", desc: "실험실을 멈추고 완성된 서비스 하나로" },
 ];
